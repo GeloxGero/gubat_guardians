@@ -1,0 +1,241 @@
+[gd_scene load_steps=26 format=3 uid="uid://5x0oa87g8kqy"]
+
+[ext_resource type="Script" path="res://Scripts/LevelA1.gd" id="1_eqk3o"]
+[ext_resource type="Texture2D" uid="uid://c8y1igbq45x0j" path="res://Assets/Environment/Misc/Start/bg/plx-1.png" id="2_12vgc"]
+[ext_resource type="PackedScene" uid="uid://w2vqxv1dfjdx" path="res://Assets/Environment/Common Environment/hearts.tscn" id="2_myemh"]
+[ext_resource type="Texture2D" uid="uid://sjv0gwdp8fq" path="res://Assets/Environment/Misc/Start/bg/plx-5.png" id="3_i5rvv"]
+[ext_resource type="PackedScene" uid="uid://dm3qylc5lfxon" path="res://Assets/Environment/Misc/Start/tile_map1.tscn" id="3_ws4dh"]
+[ext_resource type="Texture2D" uid="uid://c6avkbtcpnlos" path="res://Assets/Environment/Misc/Start/bg/plx-2.png" id="4_5afc8"]
+[ext_resource type="PackedScene" uid="uid://ihvc1sbpvo6q" path="res://Assets/Entities/Player/player.tscn" id="5_eqgv7"]
+[ext_resource type="Texture2D" uid="uid://waygwibvnisi" path="res://Assets/Environment/Misc/Start/bg/plx-3.png" id="5_hr66n"]
+[ext_resource type="Texture2D" uid="uid://chu02ygvmvtm2" path="res://Assets/Environment/Misc/Start/bg/plx-4.png" id="6_5rv8o"]
+[ext_resource type="PackedScene" uid="uid://d22ghrgq2xulb" path="res://Assets/Environment/Misc/Start/ladder_top.tscn" id="7_1nlrx"]
+[ext_resource type="PackedScene" uid="uid://bynkc2sarakay" path="res://Assets/Environment/Common Environment/seed.tscn" id="7_ht1vm"]
+[ext_resource type="Texture2D" uid="uid://cjrdekkhiyy6s" path="res://Assets/Environment/Misc/Start/tilemap.png" id="7_pfhv4"]
+[ext_resource type="PackedScene" uid="uid://bjts4rp80ikpj" path="res://Assets/Environment/Misc/Start/tile_map_ladder.tscn" id="8_j6107"]
+[ext_resource type="Texture2D" uid="uid://deuqt6t7lfx7y" path="res://Assets/Environment/Misc/Start/48x48 trees.png" id="11_uut4q"]
+[ext_resource type="Texture2D" uid="uid://6d08js7ck1nt" path="res://Assets/Environment/Misc/Start/Misc/Saplings.png" id="12_s8yqo"]
+[ext_resource type="PackedScene" uid="uid://cevbk2dj7hyqu" path="res://Assets/Entities/Common Entities/bird.tscn" id="14_3rgiy"]
+[ext_resource type="PackedScene" uid="uid://8qxglkybl3bu" path="res://Assets/Entities/Common Entities/crow.tscn" id="15_t1s4y"]
+[ext_resource type="PackedScene" uid="uid://cfl3uvu86an6y" path="res://Assets/Entities/Common Entities/EngBird.tscn" id="16_sthk8"]
+[ext_resource type="PackedScene" uid="uid://leaokftbf25j" path="res://Assets/Entities/Enemy/wood_cutter.tscn" id="18_xtmmx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hvgme"]
+texture = ExtResource("7_pfhv4")
+texture_region_size = Vector2i(32, 32)
+16:8/0 = 0
+16:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+16:8/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_g7pir"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_hvgme")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_avltm"]
+texture = ExtResource("11_uut4q")
+0:0/size_in_atlas = Vector2i(3, 3)
+0:0/0 = 0
+3:0/size_in_atlas = Vector2i(3, 3)
+3:0/0 = 0
+6:0/size_in_atlas = Vector2i(3, 3)
+6:0/0 = 0
+9:0/size_in_atlas = Vector2i(3, 3)
+9:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wdaos"]
+texture = ExtResource("12_s8yqo")
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+17:13/0 = 0
+18:13/0 = 0
+23:13/0 = 0
+24:13/0 = 0
+30:13/0 = 0
+31:13/0 = 0
+5:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+13:14/0 = 0
+17:14/0 = 0
+18:14/0 = 0
+23:14/0 = 0
+24:14/0 = 0
+30:14/0 = 0
+31:14/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_sjdpi"]
+sources/0 = SubResource("TileSetAtlasSource_avltm")
+sources/1 = SubResource("TileSetAtlasSource_wdaos")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxkyq"]
+size = Vector2(20, 163)
+
+[node name="LevelA1" type="Node2D"]
+position = Vector2(1, 82)
+scale = Vector2(1.59409, 1.59409)
+script = ExtResource("1_eqk3o")
+metadata/_edit_horizontal_guides_ = [42.0]
+
+[node name="Hearts" parent="." instance=ExtResource("2_myemh")]
+
+[node name="Plx-1" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(501.854, -111.035)
+scale = Vector2(2.76123, 2.76123)
+texture = ExtResource("2_12vgc")
+
+[node name="Plx-2" type="Sprite2D" parent="Plx-1"]
+texture = ExtResource("4_5afc8")
+
+[node name="Plx-3" type="Sprite2D" parent="Plx-1"]
+texture = ExtResource("5_hr66n")
+
+[node name="Plx-4" type="Sprite2D" parent="Plx-1"]
+texture = ExtResource("6_5rv8o")
+
+[node name="Plx-5" type="Sprite2D" parent="Plx-1"]
+texture = ExtResource("3_i5rvv")
+
+[node name="Plx-2" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(1548.22, -111.035)
+scale = Vector2(2.76123, 2.76123)
+texture = ExtResource("2_12vgc")
+
+[node name="Plx-2" type="Sprite2D" parent="Plx-2"]
+texture = ExtResource("4_5afc8")
+
+[node name="Plx-3" type="Sprite2D" parent="Plx-2"]
+texture = ExtResource("5_hr66n")
+
+[node name="Plx-4" type="Sprite2D" parent="Plx-2"]
+texture = ExtResource("6_5rv8o")
+
+[node name="Plx-5" type="Sprite2D" parent="Plx-2"]
+texture = ExtResource("3_i5rvv")
+
+[node name="Plx-6" type="Sprite2D" parent="Plx-2"]
+texture = ExtResource("3_i5rvv")
+
+[node name="Plx-3" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(2598.35, -111.035)
+scale = Vector2(2.76123, 2.76123)
+texture = ExtResource("2_12vgc")
+
+[node name="Plx-2" type="Sprite2D" parent="Plx-3"]
+texture = ExtResource("4_5afc8")
+
+[node name="Plx-3" type="Sprite2D" parent="Plx-3"]
+texture = ExtResource("5_hr66n")
+
+[node name="Plx-4" type="Sprite2D" parent="Plx-3"]
+texture = ExtResource("6_5rv8o")
+
+[node name="Plx-5" type="Sprite2D" parent="Plx-3"]
+texture = ExtResource("3_i5rvv")
+
+[node name="Plx-6" type="Sprite2D" parent="Plx-3"]
+texture = ExtResource("3_i5rvv")
+
+[node name="Seed" parent="." instance=ExtResource("7_ht1vm")]
+position = Vector2(669.347, 122.954)
+
+[node name="Trapdoor" type="Node2D" parent="."]
+position = Vector2(345.024, 62.1044)
+
+[node name="LadderTop" parent="Trapdoor" instance=ExtResource("7_1nlrx")]
+
+[node name="Trapdoor2" type="Node2D" parent="."]
+position = Vector2(346.906, 63.9864)
+
+[node name="LadderTop" parent="Trapdoor2" instance=ExtResource("7_1nlrx")]
+position = Vector2(126.718, -1.25462)
+
+[node name="Trapdoor3" type="Node2D" parent="."]
+position = Vector2(141.774, 35.7571)
+
+[node name="LadderTop" parent="Trapdoor3" instance=ExtResource("7_1nlrx")]
+position = Vector2(127.345, 0)
+
+[node name="TileMapOneWay" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_g7pir")
+cell_quadrant_size = 32
+format = 2
+
+[node name="TileMapLadder" parent="." instance=ExtResource("8_j6107")]
+scale = Vector2(0.8, 0.8)
+layer_0/tile_data = PackedInt32Array(131085, 1048576, 8, 131090, 1048576, 8)
+layer_1/tile_data = PackedInt32Array(327693, 1507328, 5, 262157, 1507328, 5, 327698, 1507328, 5, 327690, 1507328, 5, 262154, 1507328, 5, 196618, 1507328, 5, 131082, 1507328, 5, 65546, 1507328, 5, 262162, 1507328, 5, 196621, 1507328, 5, 131085, 1507328, 5, 196626, 1507328, 5, 131090, 1507328, 5)
+
+[node name="TileMapGround" parent="." instance=ExtResource("3_ws4dh")]
+scale = Vector2(0.8, 0.8)
+cell_quadrant_size = 32
+layer_0/tile_data = PackedInt32Array(458751, 458752, 12, 393216, 196608, 12, 393217, 589824, 12, 393218, 327680, 11, 393219, 720896, 12, 393220, 131072, 12, 393221, 131072, 11, 393222, 131072, 11, 393223, 327680, 12, 393224, 393216, 12, 393225, 327680, 12, 393226, 131072, 11, 393227, 131072, 12, 393228, 196608, 12, 393229, 196608, 12, 393230, 524288, 12, 393231, 458752, 12, 393232, 720896, 12, 393233, 393216, 12, 393234, 131072, 11, 393235, 524288, 11, 393236, 327680, 11, 393237, 524288, 11, 393238, 393216, 12, 393239, 131072, 11, 393240, 655360, 12, 393241, 131072, 12, 393242, 524288, 11, 393243, 131072, 11, 393244, 720896, 11, 393245, 393216, 12, 393246, 589824, 12, 393247, 262144, 12, 393248, 327680, 12, 393249, 720896, 11, 393250, 393216, 12, 393251, 327680, 12, 393252, 393216, 12, 393253, 327680, 12, 393254, 393216, 12, 393255, 524288, 12, 393256, 720896, 11, 393257, 458752, 12, 393258, 196608, 12, 393259, 524288, 11, 393260, 589824, 12, 393261, 327680, 11, 393262, 720896, 12, 393263, 655360, 12, 393264, 393216, 12, 393265, 524288, 11, 393266, 327680, 12)
+layer_3/name = "Platforms"
+layer_3/enabled = true
+layer_3/modulate = Color(1, 1, 1, 1)
+layer_3/y_sort_enabled = false
+layer_3/y_sort_origin = 0
+layer_3/z_index = -2
+layer_3/tile_data = PackedInt32Array(131084, 983040, 8, 131086, 1048576, 8, 131087, 1048576, 8, 131088, 1048576, 8, 131089, 1048576, 8)
+
+[node name="TileMapTrees" type="TileMap" parent="."]
+scale = Vector2(5, 5)
+tile_set = SubResource("TileSet_sjdpi")
+format = 2
+layer_0/tile_data = PackedInt32Array(524289, 196608, 0, 1, 196608, 0, 8, 393216, 0, 15, 0, 0, 12, 0, 0)
+
+[node name="collisions" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
+polygon = PackedVector2Array(3.7639, -57.0859, 2, 164, -9, 164, -3.13659, -55.8312)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="collisions"]
+position = Vector2(1278, 2)
+polygon = PackedVector2Array(2, 0, 2, 164, -9, 164, -7.94849, 76.198, -7, -3)
+
+[node name="EdgeRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeRight"]
+position = Vector2(1260, 81.5)
+shape = SubResource("RectangleShape2D_lxkyq")
+
+[node name="Player" parent="." instance=ExtResource("5_eqgv7")]
+position = Vector2(380.154, 84.0605)
+speed = 140.0
+jump_force = 1.2
+
+[node name="Birds" type="Node2D" parent="."]
+position = Vector2(916.511, 97.2341)
+
+[node name="EngBird" parent="Birds" instance=ExtResource("16_sthk8")]
+visible = false
+position = Vector2(-198.86, 42.6576)
+
+[node name="Crow" parent="Birds" instance=ExtResource("15_t1s4y")]
+visible = false
+position = Vector2(-382.036, 42.6576)
+
+[node name="Bird" parent="Birds" instance=ExtResource("14_3rgiy")]
+visible = false
+position = Vector2(-53.9494, 52.6947)
+
+[node name="WoodCutter" parent="." instance=ExtResource("18_xtmmx")]
+position = Vector2(581.523, 148.047)
+
+[connection signal="body_entered" from="EdgeRight" to="." method="_on_edge_right_body_entered"]
+[connection signal="body_exited" from="EdgeRight" to="." method="_on_edge_right_body_exited"]

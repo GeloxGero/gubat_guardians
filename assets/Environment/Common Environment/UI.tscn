@@ -1,0 +1,152 @@
+[gd_scene load_steps=14 format=3 uid="uid://w2vqxv1dfjdx"]
+
+[ext_resource type="Script" path="res://Scripts/hearts.gd" id="1_poyse"]
+[ext_resource type="Texture2D" uid="uid://sqs2stw52fga" path="res://assets/Environment/Misc/waste.Garbage_NEW.png" id="2_pgsoi"]
+[ext_resource type="Texture2D" uid="uid://dc8cv88vih03m" path="res://assets/Environment/Misc/hearts.png" id="3_j2g4s"]
+[ext_resource type="Texture2D" uid="uid://b4t1mlhy4qgco" path="res://assets/Environment/Common Environment/Wooden GUI.png" id="4_74vva"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3aj2"]
+atlas = ExtResource("2_pgsoi")
+region = Rect2(256, 736, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gfy0"]
+atlas = ExtResource("4_74vva")
+region = Rect2(288, 832, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1udht"]
+atlas = ExtResource("4_74vva")
+region = Rect2(416, 976, 128, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4wi0"]
+atlas = ExtResource("4_74vva")
+region = Rect2(352, 640, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21sxe"]
+atlas = ExtResource("4_74vva")
+region = Rect2(384, 640, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hihh3"]
+atlas = ExtResource("4_74vva")
+region = Rect2(1072, 688, 192, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giqq2"]
+atlas = ExtResource("4_74vva")
+region = Rect2(448, 832, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qnde"]
+atlas = ExtResource("4_74vva")
+region = Rect2(384, 640, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyjic"]
+atlas = ExtResource("4_74vva")
+region = Rect2(288, 640, 32, 32)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_poyse")
+
+[node name="Hearts" type="Sprite2D" parent="."]
+position = Vector2(78, 18)
+texture = ExtResource("3_j2g4s")
+vframes = 6
+
+[node name="Trash" type="Sprite2D" parent="."]
+position = Vector2(617, 53)
+texture = SubResource("AtlasTexture_d3aj2")
+
+[node name="Label" type="Label" parent="Trash"]
+offset_left = -46.0
+offset_top = -15.0
+offset_right = -9.0
+offset_bottom = 8.0
+
+[node name="PauseButton" type="TextureButton" parent="."]
+offset_left = 603.0
+offset_top = 9.0
+offset_right = 635.0
+offset_bottom = 41.0
+scale = Vector2(0.846292, 0.846292)
+texture_normal = SubResource("AtlasTexture_2gfy0")
+
+[node name="PauseUI" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -232.0
+offset_top = -13.0
+offset_right = -192.0
+offset_bottom = 27.0
+scale = Vector2(1.486, 1.43399)
+
+[node name="ColorRect" type="ColorRect" parent="PauseUI"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 9.0
+offset_right = 599.0
+offset_bottom = 359.0
+color = Color(0, 0, 0, 0.643137)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseUI"]
+position = Vector2(360.876, 96.6786)
+texture = SubResource("AtlasTexture_1udht")
+
+[node name="PlayButton" type="TextureButton" parent="PauseUI"]
+layout_mode = 0
+offset_left = 393.001
+offset_top = 56.4857
+offset_right = 433.001
+offset_bottom = 96.4857
+texture_normal = SubResource("AtlasTexture_u4wi0")
+
+[node name="PRestartButton" type="TextureButton" parent="PauseUI"]
+layout_mode = 0
+offset_left = 393.001
+offset_top = 104.603
+offset_right = 433.001
+offset_bottom = 144.603
+texture_normal = SubResource("AtlasTexture_21sxe")
+
+[node name="GameOverUI" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="GameOverUI"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 652.0
+offset_bottom = 424.0
+color = Color(0, 0, 0, 0.85098)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameOverUI"]
+position = Vector2(335, 82)
+texture = SubResource("AtlasTexture_hihh3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="GameOverUI"]
+position = Vector2(336, 166)
+texture = SubResource("AtlasTexture_giqq2")
+
+[node name="GRestartButton" type="TextureButton" parent="GameOverUI"]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 158.0
+offset_right = 342.0
+offset_bottom = 198.0
+texture_normal = SubResource("AtlasTexture_7qnde")
+
+[node name="HomeButton" type="TextureButton" parent="GameOverUI"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 158.0
+offset_right = 376.0
+offset_bottom = 198.0
+texture_normal = SubResource("AtlasTexture_kyjic")
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="PauseUI/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PauseUI/PRestartButton" to="." method="_on_p_restart_button_pressed"]
+[connection signal="pressed" from="GameOverUI/GRestartButton" to="." method="_on_g_restart_button_pressed"]
+[connection signal="pressed" from="GameOverUI/HomeButton" to="." method="_on_home_button_pressed"]

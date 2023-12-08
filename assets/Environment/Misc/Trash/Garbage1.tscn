@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dklkhgcdu4f2b"]
+
+[ext_resource type="Script" path="res://Scripts/Garbage.gd" id="1_c1m8u"]
+[ext_resource type="Texture2D" uid="uid://sqs2stw52fga" path="res://assets/Environment/Misc/waste.Garbage_NEW.png" id="2_y8vj0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6idw1"]
+atlas = ExtResource("2_y8vj0")
+region = Rect2(240, 216, 16, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shnpe"]
+size = Vector2(15, 24)
+
+[node name="Garbage" type="Area2D"]
+position = Vector2(122, 43)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_c1m8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_6idw1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_shnpe")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

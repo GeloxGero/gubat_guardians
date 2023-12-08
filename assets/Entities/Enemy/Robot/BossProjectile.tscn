@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://gwt4fhjc62hj"]
+
+[ext_resource type="Texture2D" uid="uid://xjcj45rlores" path="res://assets/Entities/Enemy/Robot/Boss_Spritesheet.png" id="1_ht00s"]
+[ext_resource type="Script" path="res://Scripts/BossProjectile.gd" id="1_tqggb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xuv5"]
+atlas = ExtResource("1_ht00s")
+region = Rect2(24, 536, 16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3lipc"]
+radius = 6.0
+height = 14.0
+
+[node name="BossProjectile" type="Area2D"]
+script = ExtResource("1_tqggb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8, -8)
+texture = SubResource("AtlasTexture_1xuv5")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3lipc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

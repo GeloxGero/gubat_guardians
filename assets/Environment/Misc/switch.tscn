@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://8kqu50gtq1w2"]
+
+[ext_resource type="Texture2D" uid="uid://g10x8xcon6ga" path="res://assets/Environment/Misc/Fire Assets/burning_start_1.png" id="1_aumex"]
+[ext_resource type="Script" path="res://Scripts/switch.gd" id="1_u84t5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ddrf"]
+atlas = ExtResource("1_aumex")
+region = Rect2(48, 8, 24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flv4c"]
+size = Vector2(29.5, 26.5)
+
+[node name="Switch" type="Area2D"]
+script = ExtResource("1_u84t5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = 32
+position = Vector2(396, 98)
+texture = SubResource("AtlasTexture_8ddrf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(397, 114)
+shape = SubResource("RectangleShape2D_flv4c")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

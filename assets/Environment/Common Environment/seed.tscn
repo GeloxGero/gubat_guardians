@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bynkc2sarakay"]
+
+[ext_resource type="Script" path="res://Scripts/seed.gd" id="1_5na6w"]
+[ext_resource type="Texture2D" uid="uid://c3raq8lnpn0xa" path="res://Assets/Environment/Common Environment/seeds.png" id="1_tloux"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aypfn"]
+radius = 4.12311
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ynrim"]
+radius = 14.0357
+
+[node name="Seed" type="StaticBody2D"]
+script = ExtResource("1_5na6w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aypfn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("1_tloux")
+hframes = 7
+vframes = 2
+
+[node name="SeedBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeedBox"]
+shape = SubResource("CircleShape2D_ynrim")
+
+[connection signal="body_entered" from="SeedBox" to="." method="_on_seed_box_body_entered"]
+[connection signal="body_exited" from="SeedBox" to="." method="_on_seed_box_body_exited"]

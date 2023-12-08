@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://q074ixj1ajlf"]
+
+[ext_resource type="Script" path="res://StageManager.gd" id="1_cwqu8"]
+
+[sub_resource type="Animation" id="Animation_gvb76"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0gxyc"]
+resource_name = "Transition"
+
+[sub_resource type="Animation" id="Animation_6ta73"]
+resource_name = "transin"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nwkul"]
+resource_name = "transout"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hwfqi"]
+_data = {
+"RESET": SubResource("Animation_gvb76"),
+"Transition": SubResource("Animation_0gxyc"),
+"transin": SubResource("Animation_6ta73"),
+"transout": SubResource("Animation_nwkul")
+}
+
+[node name="StageManager" type="CanvasLayer"]
+script = ExtResource("1_cwqu8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 370.0
+color = Color(0, 0, 0, 0)
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hwfqi")
+}

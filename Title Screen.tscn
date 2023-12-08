@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cceprbqsjmd4k"]
+
+[ext_resource type="Script" path="res://scripts/TitleScreen.gd" id="1_lpbgr"]
+[ext_resource type="AudioStream" uid="uid://umqv43pau82i" path="res://assets/Audio/MENU.mp3" id="2_1svl2"]
+[ext_resource type="Texture2D" uid="uid://bnfiifcn28atc" path="res://assets/Environment/Misc/Start/play.png" id="4_i7hpv"]
+[ext_resource type="Texture2D" uid="uid://dmgy1tu3pgmfs" path="res://assets/Environment/Misc/Start/quit.png" id="5_mqiu5"]
+[ext_resource type="Texture2D" uid="uid://bgoggavmd7jj1" path="res://assets/Environment/Misc/Start/Title.jpg" id="6_jg04v"]
+
+[node name="Title Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+pivot_offset = Vector2(194, 229)
+script = ExtResource("1_lpbgr")
+metadata/_edit_horizontal_guides_ = [-19.0]
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(323.838, 185.625)
+scale = Vector2(0.91005, 0.91005)
+texture = ExtResource("6_jg04v")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-117, -6)
+stream = ExtResource("2_1svl2")
+
+[node name="StartButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 124.0
+offset_top = 279.0
+offset_right = 236.0
+offset_bottom = 314.0
+scale = Vector2(1.85163, 1.84933)
+texture_normal = ExtResource("4_i7hpv")
+
+[node name="QuitButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 377.0
+offset_top = 281.0
+offset_right = 489.0
+offset_bottom = 316.0
+scale = Vector2(1.76611, 1.738)
+texture_normal = ExtResource("5_mqiu5")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0y4lbtiwr25y"]
+
+[ext_resource type="Script" path="res://scripts/TitleScreen.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dlq2rqetbw7jr" path="res://Assets/Environment/Misc/Start/Misc/quit_button.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://8sudsbesbwfw" path="res://Assets/Environment/Misc/Start/Misc/start_button.png" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Environment/Start/gubat.jpg" id="4_1p7xy"]
+
+[node name="Title Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+pivot_offset = Vector2(194, 229)
+script = ExtResource("1")
+metadata/_edit_horizontal_guides_ = [-19.0]
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(155, 66)
+scale = Vector2(0.0174813, 0.00675803)
+
+[node name="Gubat" type="Sprite2D" parent="."]
+position = Vector2(324, 184)
+scale = Vector2(1.84117, 1.84117)
+texture = ExtResource("4_1p7xy")
+
+[node name="Gubat2" type="Sprite2D" parent="."]
+position = Vector2(326, -649)
+scale = Vector2(1.84117, 1.84117)
+texture = ExtResource("4_1p7xy")
+
+[node name="StartButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 89.0
+offset_top = 244.0
+offset_right = 201.0
+offset_bottom = 279.0
+scale = Vector2(1.85163, 1.84933)
+texture_normal = ExtResource("3")
+
+[node name="QuitButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 364.0
+offset_top = 244.0
+offset_right = 476.0
+offset_bottom = 279.0
+scale = Vector2(1.76611, 1.738)
+texture_normal = ExtResource("2")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]

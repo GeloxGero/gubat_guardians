@@ -1,0 +1,235 @@
+[gd_scene load_steps=16 format=3 uid="uid://leaokftbf25j"]
+
+[ext_resource type="Script" path="res://Scripts/wood_cutter.gd" id="1_6txvm"]
+[ext_resource type="Texture2D" uid="uid://1teq21s8dv7g" path="res://assets/Entities/Enemy/Woodcutter/woodcutter.png" id="2_rojqd"]
+
+[sub_resource type="Animation" id="Animation_nyxg1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:can_attack")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_itsxy"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.175, 0.275, 0.375, 0.45, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(5, 5), Vector2i(4, 5), Vector2i(3, 5), Vector2i(2, 5), Vector2i(1, 5), Vector2i(0, 5), Vector2i(5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamagingArea:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.475),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:can_attack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_c1yvp"]
+resource_name = "damaged"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.225, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_d35sf"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.3, 0.475, 0.65, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(5, 4), Vector2i(4, 4), Vector2i(3, 4), Vector2i(2, 4), Vector2i(1, 4), Vector2i(0, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_kt284"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_7n0qs"]
+resource_name = "run"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 13]
+}
+
+[sub_resource type="Animation" id="Animation_3pfxg"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1yrx4"]
+_data = {
+"RESET": SubResource("Animation_nyxg1"),
+"attack": SubResource("Animation_itsxy"),
+"damaged": SubResource("Animation_c1yvp"),
+"death": SubResource("Animation_d35sf"),
+"idle": SubResource("Animation_kt284"),
+"run": SubResource("Animation_7n0qs"),
+"walk": SubResource("Animation_3pfxg")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p8fno"]
+radius = 7.0
+height = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0nnx"]
+size = Vector2(310.231, 189.247)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ixyp"]
+size = Vector2(67.7019, 11.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ef3yy"]
+size = Vector2(68.445, 11)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jkox5"]
+radius = 11.0
+height = 42.0
+
+[node name="WoodCutter" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_6txvm")
+can_attack = true
+attack_left_position = Vector2(-30, -11)
+attack_right_position = Vector2(31, -11)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1yrx4")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(1.24902, 1.24902)
+texture = ExtResource("2_rojqd")
+hframes = 6
+vframes = 6
+frame = 35
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+scale = Vector2(1.53107, 1.29121)
+shape = SubResource("CapsuleShape2D_p8fno")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+scale = Vector2(1, 0.52)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, -80.7692)
+scale = Vector2(1.04018, 0.989087)
+shape = SubResource("RectangleShape2D_w0nnx")
+
+[node name="DamagingArea" type="Area2D" parent="."]
+monitoring = false
+
+[node name="AttackingCollide" type="CollisionShape2D" parent="DamagingArea"]
+position = Vector2(-30, -11)
+shape = SubResource("RectangleShape2D_1ixyp")
+
+[node name="AttackingArea" type="Area2D" parent="."]
+
+[node name="AttackingDetect" type="CollisionShape2D" parent="AttackingArea"]
+position = Vector2(-30, -11)
+shape = SubResource("RectangleShape2D_ef3yy")
+
+[node name="SelfDamage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelfDamage"]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_jkox5")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 50.0
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="DamagingArea" to="." method="_on_damaging_area_body_entered"]
+[connection signal="body_exited" from="DamagingArea" to="." method="_on_damaging_area_body_exited"]
+[connection signal="body_entered" from="AttackingArea" to="." method="_on_attacking_area_body_entered"]
+[connection signal="body_exited" from="AttackingArea" to="." method="_on_attacking_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
